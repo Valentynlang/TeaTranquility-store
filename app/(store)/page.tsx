@@ -1,8 +1,11 @@
-import { Button } from "@/components/ui/button";
 import { getAllProducts } from "@/sanity/lib/products/getAllProducts";
 import ProductCard from "@/components/Products";
 import { getAllCategories } from "@/sanity/lib/products/getAllCategories";
 import SaleBanner from "@/components/SaleBanner";
+
+export const dynamic = "force-static";
+export const revalidate = 60;
+
 export default async function Home() {
   const products = await getAllProducts() 
   const categories = await getAllCategories() 

@@ -65,7 +65,7 @@ export async function createCheckoutSession(items: GroupedBasketItems[], metadat
         quantity: item.quantity,
         price_data: {
           currency: "usd",
-          unit_amount: Math.round(item.product.price * 100),
+          unit_amount: Math.round((item.product.price! || 0) * 100),
           product_data: {
             name: item.product.name || "Unnamed Product",
             description: `Product ID: ${item.product._id}`,

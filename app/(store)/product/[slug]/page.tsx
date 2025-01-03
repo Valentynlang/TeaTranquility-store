@@ -3,8 +3,10 @@ import { getProductBySlug } from "@/sanity/lib/products/getProductBySlug"
 import { notFound } from "next/navigation"
 import Image from "next/image"
 import { PortableText } from "next-sanity"
-import { Button } from "@/components/ui/button"
 import AddToBasketButton from "@/components/AddToBasketButton"
+
+export const dynamic = "force-static";
+export const revalidate = 60;
 
 async function ProductPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params

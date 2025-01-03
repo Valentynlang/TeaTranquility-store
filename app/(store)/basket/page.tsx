@@ -73,7 +73,7 @@ return <div className="container mx-auto p-4 max-w-6xl">
           <div className="flex items-center cursor-pointer flex-1 min-w-0"
           onClick={() => router.push(`/products/${item.product.slug?.current}`)}>
             <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 mr-4">
-              <Image src={imageUrl(item.product.image).url()} alt={item.product.name ?? "Product Image"} width={96} height={96}
+              <Image src={imageUrl(item.product.image!).url()} alt={item.product.name ?? "Product Image"} width={96} height={96}
               className="w-full h-full object-cover rounded" />
             </div>
             <div className="min-w-0">

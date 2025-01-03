@@ -4,14 +4,16 @@ import "../globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import Header from "@/components/Header";
 import { SanityLive } from "@/sanity/lib/live";
-
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
+import { DisableDraftMode } from "@/components/DisableDraftMode";
 
 export const metadata: Metadata = {
   title: "TeaTranquility",
   description: "TeaTranquility is a tea store that sells high quality tea.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
@@ -20,6 +22,12 @@ export default function RootLayout({
     <ClerkProvider dynamic>
       <html lang="en">
         <body>
+          {(await draftMode()).isEnabled && (
+            <>
+              <DisableDraftMode />
+              <VisualEditing />
+            </>
+          )}
            <main>
             <Header />
             {children}

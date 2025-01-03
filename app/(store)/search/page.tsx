@@ -5,9 +5,9 @@ import { searchProductsByName } from "@/sanity/lib/products/searchProductsByName
 async function SearchPage({
   searchParams
 }: {
-  searchParams: {
+  searchParams: Promise<{
     search: string
-  }
+  }>
 }) {
     const { search } = await searchParams
     const products = await searchProductsByName(search)
